@@ -1,0 +1,8 @@
+services:
+    - app\Router\RouterFactory::createRouter
+    configLoader:
+        factory: Twig\Loader\FilesystemLoader(%appDir%/../deploy/local)
+    twigEnvironment:
+        factory: Twig\Environment(@configLoader)
+    - app\Command\GenerateConfigCommand
+    - app\Service\TemplateRenderer(@twigEnvironment)
