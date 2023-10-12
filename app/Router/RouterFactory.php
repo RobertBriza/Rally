@@ -10,12 +10,16 @@ use Nette\Application\Routers\RouteList;
 
 final class RouterFactory
 {
-	use Nette\StaticClass;
+    use Nette\StaticClass;
 
-	public static function createRouter(): RouteList
-	{
-		$router = new RouteList;
+    public static function createRouter(): RouteList
+    {
+        $router = new RouteList;
 
-		return $router;
-	}
+        $router->addRoute('<module>/<presenter>/<action>[/<id>]');
+
+        $router->addRoute('/', 'Rally:Teams:list');
+
+        return $router;
+    }
 }

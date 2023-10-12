@@ -4,6 +4,7 @@ namespace app\RallyModule\Entity;
 
 use app\AppModule\Entity\BaseEntity;
 use app\RallyModule\Enum\MemberType;
+use app\RallyModule\Model\MemberDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -115,5 +116,14 @@ class Member implements BaseEntity
         }
 
         return $this;
+    }
+
+    public function toDTO(): MemberDTO
+    {
+        return new MemberDTO(
+            $this->getFirstName(),
+            $this->getLastName(),
+            $this->getType()
+        );
     }
 }

@@ -1,0 +1,33 @@
+{block content}
+<div>
+    <h2 class="text-center mb-4">Seznam týmů</h2>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Název týmu</th>
+                <th>Pozice</th>
+                <th>Členové</th>
+            </tr>
+        </thead>
+        <tbody>
+            {foreach $teams as $team}
+                {foreach $memberTypes as $type}
+                    <tr>
+                        {if $iterator->first}
+                            <td rowspan="{count($memberTypes)}">{$team->name}</td>
+                        {/if}
+                        <td><strong>{$type->getLang()}</strong></td>
+                        <td>
+                            {foreach $team->members as $member}
+                                {if $member->type->value === $type->value}
+                                    {$member->firstName} {$member->lastName}<br/>
+                                {/if}
+                            {/foreach}
+                        </td>
+                    </tr>
+                {/foreach}
+            {/foreach}
+        </tbody>
+    </table>
+</div>
+{/block}

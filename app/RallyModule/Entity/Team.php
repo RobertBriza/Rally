@@ -3,6 +3,7 @@
 namespace app\RallyModule\Entity;
 
 use app\AppModule\Entity\BaseEntity;
+use app\RallyModule\Model\TeamDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -62,9 +63,11 @@ class Team implements BaseEntity
         return $this->members;
     }
 
-    public function setMembers(Collection $members): void
+    public function setMembers(Collection $members): self
     {
         $this->members = $members;
+
+        return $this;
     }
 
     public function addMember(Member $member): self
@@ -75,5 +78,13 @@ class Team implements BaseEntity
         }
 
         return $this;
+    }
+
+    public function toDTO(): TeamDTO
+    {
+        return new TeamDTO(
+            $this->getName(),
+            $this->getMembers()->map(fn (Member $member) => $member->toDTO())
+        );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Service;
+namespace app\AppModule\Service;
 
 use Nette\Utils\FileSystem;
 use Twig\Environment;

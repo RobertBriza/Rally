@@ -19,6 +19,11 @@ orm.annotations:
 	mapping:
 		app\RallyModule\Entity: %appDir%/RallyModule/Entity
 
+nettrine.orm:
+    configuration:
+        customStringFunctions:
+            FIELD: DoctrineExtensions\Query\Mysql\Field
+
 nettrine.dbal:
 	debug:
 		panel: %debugMode%

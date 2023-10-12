@@ -27,7 +27,8 @@
     "twig/twig": "^3.7",
     "vlucas/phpdotenv": "^5.5",
     "nettrine/migrations": "^0.9.1",
-    "nettrine/fixtures": "^0.7.2"
+    "nettrine/fixtures": "^0.7.2",
+    "beberlei/doctrineextensions": "dev-master"
   },
   "autoload": {
     "classmap": ["app/Bootstrap.php"]

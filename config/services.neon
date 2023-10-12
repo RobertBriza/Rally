@@ -1,8 +1,22 @@
 services:
     - app\Router\RouterFactory::createRouter
+    - app\AppModule\Service\TemplateRenderer(@twigEnvironment)
+    - app\RallyModule\Forms\MemberFormFactory
+    - app\RallyModule\Forms\TeamFormFactory
+    - app\RallyModule\Service\RallyService
+    - app\RallyModule\Util\RallyDataUtil
+
     configLoader:
         factory: Twig\Loader\FilesystemLoader(%appDir%/../deploy/local)
     twigEnvironment:
         factory: Twig\Environment(@configLoader)
-    - app\Command\GenerateConfigCommand
-    - app\Service\TemplateRenderer(@twigEnvironment)
+
+    - app\AppModule\Command\GenerateConfigCommand
+
+    -
+        class: \app\RallyModule\Repository\MemberRepository
+        factory: @Doctrine\ORM\EntityManagerInterface::getRepository(\app\RallyModule\Entity\Member)
+
+    -
+        class: \app\RallyModule\Repository\TeamRepository
+        factory: @Doctrine\ORM\EntityManagerInterface::getRepository(\app\RallyModule\Entity\Team)
