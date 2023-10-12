@@ -2,10 +2,11 @@
 
 namespace app\RallyModule\Presenters;
 
-use app\AppModule\Forms\MemberFormFactory;
 use app\Presenters\BasePresenter;
 use app\RallyModule\Enum\MemberType;
+use app\RallyModule\Forms\TeamFormFactory;
 use app\RallyModule\Service\RallyService;
+use Nette\Application\UI\Form;
 
 class TeamsPresenter extends BasePresenter
 {
@@ -13,7 +14,7 @@ class TeamsPresenter extends BasePresenter
     public RallyService $service;
 
     /** @inject */
-    public MemberFormFactory $memberFormFactory;
+    public TeamFormFactory $teamFormFactory;
 
     public function renderDefault(): void
     {
@@ -23,11 +24,22 @@ class TeamsPresenter extends BasePresenter
     public function renderDetail(int $id): void
     {
         $this->template->members = $this->service->getTeamMembers($id);
+        $this->template->teamId = $id;
     }
 
     public function renderList(): void
     {
         $this->template->teams = $this->service->getAllTeamsSortedByType();
         $this->template->memberTypes = MemberType::cases();
+    }
+
+    protected function createComponentRegistrationForm(): Form
+    {
+        return $this->teamFormFactory->create(
+            function (): void {
+                $this->flashMessage('Tým byl úspěšně přidán.');
+                $this->redirect(':Rally:teams:default');
+            }
+        );
     }
 }

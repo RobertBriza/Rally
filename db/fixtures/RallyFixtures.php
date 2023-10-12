@@ -124,7 +124,7 @@ class RallyFixtures extends AbstractFixture
         $manager->persist($milos);
 
         $teamA = new Team();
-        $teamA->setName('Teams A')
+        $teamA->setName('Team A')
             ->addMember($jakub)
             ->addMember($karel)
             ->addMember($stepan)
@@ -134,7 +134,7 @@ class RallyFixtures extends AbstractFixture
         $manager->persist($teamA);
 
         $teamB = new Team();
-        $teamB->setName('Teams B')
+        $teamB->setName('Team B')
             ->addMember($pepa)
             ->addMember($miroslav)
             ->addMember($filip)
@@ -144,7 +144,7 @@ class RallyFixtures extends AbstractFixture
         $manager->persist($teamB);
 
         $teamC = new Team();
-        $teamC->setName('Teams C')
+        $teamC->setName('Team C')
             ->addMember($jakub)
             ->addMember($karel)
             ->addMember($lukas)
@@ -156,7 +156,7 @@ class RallyFixtures extends AbstractFixture
         $manager->persist($teamC);
 
         $teamD = new Team();
-        $teamD->setName('Teams D')
+        $teamD->setName('Team D')
             ->addMember($miroslav)
             ->addMember($karolina)
             ->addMember($filip)

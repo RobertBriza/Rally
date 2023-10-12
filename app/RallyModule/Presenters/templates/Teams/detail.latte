@@ -1,12 +1,12 @@
 {block content}
 <div>
-    <h2 class="text-center mb-4">Members</h2>
+    <h2 class="text-center mb-4">Členové</h2>
     <table class="table table-bordered table-hover">
         <thead class="thead-light">
             <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Type</th>
+                <th scope="col">Jméno</th>
+                <th scope="col">Příjmení</th>
+                <th scope="col">Pozice</th>
             </tr>
         </thead>
         <tbody>
@@ -14,10 +14,11 @@
             <tr>
                 <td>{$member->firstName}</td>
                 <td>{$member->lastName}</td>
-                <td>{$member->type->value}</td>
+                <td>{$member->type->getLang()}</td>
             </tr>
             {/foreach}
         </tbody>
     </table>
+    <li class="list-group-item"><a n:href=":Rally:Members:create $teamId" class="text-primary">Přidat člena</a></li>
 </div>
 {/block}

@@ -16,7 +16,7 @@
                         {if $iterator->first}
                             <td rowspan="{count($memberTypes)}">{$team->name}</td>
                         {/if}
-                        <td><strong>{$type->value}</strong></td>
+                        <td><strong>{$type->getLang()}</strong></td>
                         <td>
                             {foreach $team->members as $member}
                                 {if $member->type->value === $type->value}

@@ -2,8 +2,8 @@
 
 namespace app\RallyModule\Presenters;
 
-use app\AppModule\Forms\MemberFormFactory;
 use app\Presenters\BasePresenter;
+use app\RallyModule\Forms\MemberFormFactory;
 use app\RallyModule\Service\RallyService;
 use Nette\Application\UI\Form;
 
