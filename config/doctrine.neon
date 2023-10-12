@@ -17,7 +17,7 @@ extensions:
 
 orm.annotations:
 	mapping:
-		app\Entity: %appDir%/Entity
+		app\RallyModule\Entity: %appDir%/RallyModule/Entity
 
 nettrine.dbal:
 	debug:
@@ -33,4 +33,8 @@ nettrine.dbal:
 		password: %default.password%
 
 nettrine.migrations:
-        directory: %appDir%/../migrations
+	directory: %appDir%/../db/migrations
+
+nettrine.fixtures:
+	paths:
+		- %appDir%/../db/fixtures

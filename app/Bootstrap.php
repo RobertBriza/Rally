@@ -4,25 +4,27 @@ declare(strict_types=1);
 
 namespace app;
 
-use app\Service\TemplateRenderer;
+use app\AppModule\Service\TemplateRenderer;
 use Nette\Bootstrap\Configurator;
 
 class Bootstrap
 {
-	public static function boot(): Configurator
-	{
-		$configurator = new Configurator;
-		$appDir = dirname(__DIR__);
+    public static function boot(): Configurator
+    {
+        $configurator = new Configurator;
+        $appDir = dirname(__DIR__);
 
         $configurator->setDebugMode(true);
         $configurator->enableTracy($appDir . '/log');
 
-		$configurator->setTimeZone('Europe/Prague');
-		$configurator->setTempDirectory($appDir . '/temp');
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_WARNING);
 
-		$configurator->createRobotLoader()
-			->addDirectory(__DIR__)
-			->register();
+        $configurator->setTimeZone('Europe/Prague');
+        $configurator->setTempDirectory($appDir . '/temp');
+
+        $configurator->createRobotLoader()
+            ->addDirectory(__DIR__)
+            ->register();
 
         $dotenv = \Dotenv\Dotenv::createImmutable($appDir);
         $dotenv->load();
@@ -49,6 +51,6 @@ class Bootstrap
             $configurator->addConfig($neonFile);
         }
 
-		return $configurator;
-	}
+        return $configurator;
+    }
 }

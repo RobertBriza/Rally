@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Command;
+namespace app\AppModule\Command;
 
-use app\Service\TemplateRenderer;
+use app\AppModule\Service\TemplateRenderer;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -27,11 +27,11 @@ class GenerateConfigCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../../');
         $dotenv->load();
 
         $this->renderer->renderAndSaveTemplates(
-            __DIR__ . "/../../deploy/local/",
+            __DIR__ . "/../../../deploy/local/",
             $_ENV["SECRET_DIR"]
         );
 
