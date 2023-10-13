@@ -16,9 +16,9 @@ final class RouterFactory
     {
         $router = new RouteList;
 
-        $router->addRoute('<module>/<presenter>/<action>[/<id>]');
-
         $router->addRoute('/', 'Rally:Teams:list');
+
+        $router->addRoute('<module>/<presenter>/<action>[/<id>]');
 
         return $router;
     }
