@@ -2,7 +2,6 @@
 
 namespace app\RallyModule\Entity;
 
-use app\AppModule\Entity\BaseEntity;
 use app\RallyModule\Model\TeamDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="app\RallyModule\Repository\TeamRepository")
  */
-class Team implements BaseEntity
+class Team
 {
     /**
      * @ORM\Id

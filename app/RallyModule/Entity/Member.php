@@ -2,7 +2,6 @@
 
 namespace app\RallyModule\Entity;
 
-use app\AppModule\Entity\BaseEntity;
 use app\RallyModule\Enum\MemberType;
 use app\RallyModule\Model\MemberDTO;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      @ORM\UniqueConstraint(name="unique_firstname_lastname", columns={"first_name", "last_name"})
  *  })
  */
-class Member implements BaseEntity
+class Member
 {
     /**
      * @ORM\Id

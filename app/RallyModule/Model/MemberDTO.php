@@ -2,10 +2,9 @@
 
 namespace app\RallyModule\Model;
 
-use app\AppModule\Model\BaseDTO;
 use app\RallyModule\Enum\MemberType;
 
-readonly class MemberDTO implements BaseDTO
+readonly class MemberDTO
 {
     public function __construct(
         public string $firstName,
