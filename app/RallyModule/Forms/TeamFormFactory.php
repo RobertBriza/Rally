@@ -24,7 +24,7 @@ class TeamFormFactory extends FormFactory
     {
         $form = parent::createForm();
         $form->addText('name', 'Jméno:')
-            ->setRequired("Prosím, vyplňte název týmu.")
+            ->setRequired("Prosím, vyplňte název závodního týmu.")
             ->addRule(Form::MIN_LENGTH, null, 3)
             ->addRule(Form::MAX_LENGTH, null, 64)
             ->setHtmlAttribute('class', 'form-control')
