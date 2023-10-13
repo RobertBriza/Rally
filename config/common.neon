@@ -2,7 +2,7 @@ parameters:
 
 application:
 	errorPresenter: Auxiliary:Error
-	catchExceptions: false
+	catchExceptions: %productionMode%
 	mapping:
 		*: app\*Module\Presenters\*Presenter
 

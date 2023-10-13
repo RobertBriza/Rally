@@ -4,3 +4,4 @@ parameters:
         dbname: "{{ MYSQL_DATABASE }}"
         user: "{{ MYSQL_USER }}"
         password: "{{ MYSQL_PASSWORD }}"
+    production_mode: {{ PRODUCTION_MODE ? true : false }}

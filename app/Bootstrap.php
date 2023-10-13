@@ -14,7 +14,10 @@ class Bootstrap
         $configurator = new Configurator;
         $appDir = dirname(__DIR__);
 
-        $configurator->setDebugMode(true);
+        $dotenv = \Dotenv\Dotenv::createImmutable($appDir);
+        $dotenv->load();
+
+        $configurator->setDebugMode(!$_ENV['PRODUCTION_MODE']);
         $configurator->enableTracy($appDir . '/log');
 
         error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_WARNING);
@@ -26,20 +29,9 @@ class Bootstrap
             ->addDirectory(__DIR__)
             ->register();
 
-        $dotenv = \Dotenv\Dotenv::createImmutable($appDir);
-        $dotenv->load();
-
-        $originDir = __DIR__.'/../deploy/local';
-
-        $twigLoader = new \Twig\Loader\FilesystemLoader($originDir);
-        $twig = new \Twig\Environment($twigLoader);
-
         $resultDir = $_ENV["SECRET_DIR"];
-        $renderer = new TemplateRenderer($twig);
 
-        if (!$renderer->isGenerated($resultDir)) {
-            $renderer->renderAndSaveTemplates($originDir, $resultDir);
-        }
+        self::renderSecrets($resultDir);
 
         //dynamic config files
         foreach (glob($resultDir . '/*.neon') as $neonFile) {
@@ -52,5 +44,19 @@ class Bootstrap
         }
 
         return $configurator;
+    }
+
+    private static function renderSecrets(string $resultDir): void
+    {
+        $originDir = __DIR__.'/../deploy/local';
+
+        $twigLoader = new \Twig\Loader\FilesystemLoader($originDir);
+        $twig = new \Twig\Environment($twigLoader);
+
+        $renderer = new TemplateRenderer($twig);
+
+        if (!$renderer->isGenerated($resultDir)) {
+            $renderer->renderAndSaveTemplates($originDir, $resultDir);
+        }
     }
 }
