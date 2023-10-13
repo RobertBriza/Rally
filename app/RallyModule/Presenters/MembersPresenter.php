@@ -20,11 +20,17 @@ class MembersPresenter extends BasePresenter
         $this->template->teamId = $id;
     }
 
+    public function renderList(int $id): void
+    {
+        $this->template->members = $this->service->getTeamMembers($id);
+        $this->template->teamId = $id;
+    }
+
     protected function createComponentRegistrationForm(): Form
     {
         return $this->memberFormFactory->create(
             function (): void {
-                $this->flashMessage('Byl jste úspěšně přihlášen.');
+                $this->flashMessage('Byl jste úspěšně registrován.');
                 $this->redirect(':Rally:teams:default');
             },
             $this->template->teamId

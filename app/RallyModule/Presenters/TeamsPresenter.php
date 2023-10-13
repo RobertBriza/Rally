@@ -21,12 +21,6 @@ class TeamsPresenter extends BasePresenter
         $this->template->names = $this->service->getAllTeamIdNames();
     }
 
-    public function renderDetail(int $id): void
-    {
-        $this->template->members = $this->service->getTeamMembers($id);
-        $this->template->teamId = $id;
-    }
-
     public function renderList(): void
     {
         $this->template->teams = $this->service->getAllTeamsSortedByType();
@@ -37,7 +31,7 @@ class TeamsPresenter extends BasePresenter
     {
         return $this->teamFormFactory->create(
             function (): void {
-                $this->flashMessage('Tým byl úspěšně přidán.');
+                $this->flashMessage('Tým byl úspěšně registrován.');
                 $this->redirect(':Rally:teams:default');
             }
         );

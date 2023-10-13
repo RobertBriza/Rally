@@ -3,7 +3,7 @@
     <h2 class="text-center mb-4">Týmy</h2>
     <ul class="list-group">
         {foreach $names as $key => $name}
-            <li class="list-group-item"><a n:href=":Rally:Teams:detail $key" class="text-primary">{$name}</a></li>
+            <li class="list-group-item"><a n:href=":Rally:Members:list $key" class="text-primary">{$name}</a></li>
         {/foreach}
     </ul>
     <li class="list-group-item"><a n:href=":Rally:Teams:create" class="text-primary">Vytvořit nový tým</a></li>
