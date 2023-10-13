@@ -22,7 +22,7 @@ services:
     ports:
       - "8888:8080"
     volumes:
-      - "./:/var/www/html/"
+      - $VOLUME_BASE_DIR:/var/www/html
     restart: on-failure
     depends_on:
       - fpm

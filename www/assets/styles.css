@@ -1,0 +1,25 @@
+form th {
+    padding-right: 20px;
+}
+
+form td {
+    padding-bottom: 20px;
+}
+
+form small {
+    padding-left: 5px;
+}
+
+.page-heading {
+    padding-bottom: 50px;
+}
+
+.create-form {
+    display: flex;
+    justify-content: center;
+}
+
+.list-teams-table {
+    width: 50%;
+    margin: 0 auto;
+}

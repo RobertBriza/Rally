@@ -36,6 +36,11 @@ enum MemberType: string
         return $limits;
     }
 
+    public function getInfo(): string
+    {
+        return \sprintf("Minimálně %s, maximálně %s", ...$this->getMinMaxForMultiSelect());
+    }
+
     public function isNotMax(int $count): bool
     {
         [$min, $max] = $this->getMinMaxForMultiSelect();

@@ -31,7 +31,7 @@ class MembersPresenter extends BasePresenter
         return $this->memberFormFactory->create(
             function (): void {
                 $this->flashMessage('Byl jste úspěšně registrován.');
-                $this->redirect(':Rally:teams:default');
+                $this->redirect(':Rally:Teams:default');
             },
             $this->template->teamId
         );

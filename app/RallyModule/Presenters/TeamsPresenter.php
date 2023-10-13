@@ -32,7 +32,7 @@ class TeamsPresenter extends BasePresenter
         return $this->teamFormFactory->create(
             function (): void {
                 $this->flashMessage('Závodní tým byl úspěšně registrován.');
-                $this->redirect(':Rally:teams:default');
+                $this->redirect(':Rally:Teams:default');
             }
         );
     }

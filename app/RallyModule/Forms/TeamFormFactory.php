@@ -28,8 +28,6 @@ class TeamFormFactory extends FormFactory
             ->addRule(Form::MIN_LENGTH, null, 3)
             ->addRule(Form::MAX_LENGTH, null, 64)
             ->setHtmlAttribute('class', 'form-control')
-            ->setHtmlAttribute('class', 'form-control')
-            ->setHtmlAttribute('style', 'margin: 10px;')
             ->addCondition($form::FILLED)
             ->addRule(
                 Form::PATTERN,
@@ -53,7 +51,8 @@ class TeamFormFactory extends FormFactory
                     $limits
                 )
                 ->setHtmlAttribute('class', 'form-control')
-                ->setHtmlAttribute('style', 'margin: 10px;');
+                ->setOption("description", $case->getInfo());
+
 
             if ($case !== MemberType::PHOTOGRAPHER) {
                 $multiSelect->setRequired(\sprintf('Musíte vybrat alespoň %d a maximálně %d členy', ...$limits));
@@ -62,8 +61,7 @@ class TeamFormFactory extends FormFactory
         }
 
         $form->addSubmit('register', 'Registrovat')
-            ->setHtmlAttribute('class', 'btn btn-primary')
-            ->setHtmlAttribute('style', 'margin-top: 20px;');
+            ->setHtmlAttribute('class', 'btn btn-primary');
 
         $form->onSuccess[] = function (Form $form, Nette\Utils\ArrayHash $data) use ($onSuccess): void {
             try {

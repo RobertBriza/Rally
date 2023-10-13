@@ -27,7 +27,6 @@ class MemberFormFactory extends FormFactory
             ->addRule(Form::MIN_LENGTH, null, 3)
             ->addRule(Form::MAX_LENGTH, null, 64)
             ->setHtmlAttribute('class', 'form-control')
-            ->setHtmlAttribute('style', 'margin: 10px;')
             ->addCondition($form::FILLED)
             ->addRule(
                 [$this, 'isCzechChars'],
@@ -39,7 +38,6 @@ class MemberFormFactory extends FormFactory
             ->addRule(Form::MIN_LENGTH, null, 3)
             ->addRule(Form::MAX_LENGTH, null, 64)
             ->setHtmlAttribute('class', 'form-control')
-            ->setHtmlAttribute('style', 'margin: 10px;')
             ->addCondition($form::FILLED)
             ->addRule(
                 [$this, 'isCzechChars'],
@@ -52,8 +50,7 @@ class MemberFormFactory extends FormFactory
             array_map(fn(MemberType $type) => $type->getLang(), MemberType::cases())
         )
             ->setRequired("Prosím, vyberte typ.")
-            ->setHtmlAttribute('class', 'form-control')
-            ->setHtmlAttribute('style', 'margin: 10px;');
+            ->setHtmlAttribute('class', 'form-control');
 
         $form->addSelect(
             'team',
@@ -61,12 +58,10 @@ class MemberFormFactory extends FormFactory
             $this->service->getAllTeamIdNames() + [-1 => "Žádný tým"]
         )
             ->setDefaultValue($teamId ?? -1)
-            ->setHtmlAttribute('class', 'form-control')
-            ->setHtmlAttribute('style', 'margin: 10px;');
+            ->setHtmlAttribute('class', 'form-control');
 
         $form->addSubmit('register', 'Registrovat')
-            ->setHtmlAttribute('class', 'btn btn-primary')
-            ->setHtmlAttribute('style', 'margin-top: 20px;');
+            ->setHtmlAttribute('class', 'btn btn-primary');
 
         $form->onSuccess[] = function (Form $form, Nette\Utils\ArrayHash $data) use ($onSuccess): void {
             try {
