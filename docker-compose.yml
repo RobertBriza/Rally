@@ -3,13 +3,9 @@ version: '3.8'
 services:
   fpm:
     container_name: rally_php
-    environment:
-      PHP_ENV_TYPE: development
-      LOCAL_PROJECT_DIR: $LOCAL_PROJECT_DIR
     build:
       args:
-        SECRET_DIR: /app/supersecret
-        PHP_ENV_TYPE: development
+        SECRET_DIR: $SECRET_DIR
       context: $VOLUME_BASE_DIR
       dockerfile: $VOLUME_BASE_DIR/deploy/php/Dockerfile
     volumes:
