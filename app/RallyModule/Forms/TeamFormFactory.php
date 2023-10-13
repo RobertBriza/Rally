@@ -34,7 +34,7 @@ class TeamFormFactory extends FormFactory
             ->addRule(
                 Form::PATTERN,
                 'Pole nesmí obsahovat speciální znaky',
-                '^[a-zA-Z0-9 ]*$'
+                '^[a-zA-Z0-9 ěščřžýáíéůúňťďĚŠČŘŽÝÁÍÉŮÚŇŤĎ]*$'
             );
 
         foreach (MemberType::cases() as $key => $case) {

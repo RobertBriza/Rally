@@ -26,7 +26,7 @@ readonly class RallyService
     /** @return Collection<int, MemberDTO> */
     public function getTeamMembers(int $id): Collection
     {
-        $team = $this->teamRepository->findOneSortedByType($id);
+        $team = $this->teamRepository->getOneSortedByType($id);
 
         if (!$team) {
             throw new BadRequestException(\sprintf('Team with id %s not found', $id), 404);

@@ -46,7 +46,7 @@ class TeamRepository extends EntityRepository
             ->getResult();
     }
 
-    public function findOneSortedByType(int $id): ?Team
+    public function getOneSortedByType(int $id): ?Team
     {
         return $this->createQueryBuilder('t')
             ->select('t', 'm')

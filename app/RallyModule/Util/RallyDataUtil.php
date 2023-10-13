@@ -4,7 +4,7 @@ namespace app\RallyModule\Util;
 
 use Nette\Utils\ArrayHash;
 
-class RallyDataUtil
+readonly class RallyDataUtil
 {
     public function mergeMemberIds(ArrayHash $data): array
     {
