@@ -47,12 +47,7 @@ readonly class RallyService
 
         foreach ($this->teamRepository->findTeamMemberTypeCount($data->team, $data->type) as $row) {
             if (!$row['type']->isNotMax($row['memberCount'])) {
-                throw new BadRequestException(
-                    \sprintf(
-                        'Tým již obsahuje maximální počet členů typu %s',
-                        $row['type']->getLang()
-                    )
-                );
+                throw new BadRequestException();
             }
         }
 

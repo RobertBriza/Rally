@@ -1,0 +1,53 @@
+team:
+  name: 'Tým'
+  header: 'Název týmu'
+  plural: 'Týmy'
+  list: 'Seznam závodních týmů'
+  registered: 'Závodní tým byl úspěšně registrován.'
+  create: 'Vytvořit nový tým'
+  add: 'Přidat tým'
+  empty: 'Žádný tým'
+  members: 'Členové týmu'
+  max:
+    reached: 'Tým již obsahuje maximální počet členů typu %name%'
+
+member:
+  plural: 'Členové týmu'
+  driver: 'Závodník'
+  codriver: 'Spolujezdec'
+  technician: 'Technik'
+  manager: 'Manažer'
+  photographer: 'Fotograf'
+  add: 'Přidat člena'
+
+name: 'Jméno'
+lastName: 'Příjmení'
+register: 'Registrovat'
+type: 'Typ'
+position: 'Pozice'
+switchLng: 'en'
+
+field:
+  czechchars: 'Pole musí obsahovat pouze znaky české abecedy'
+  nospecialchars: 'Pole nesmí obsahovat speciální znaky'
+  firstName:
+    required: 'Prosím, vyplňte jméno.'
+  lastName:
+    required: 'Prosím, vyplňte příjmení.'
+  type:
+    required: 'Prosím, vyberte typ.'
+  member:
+    min:
+      one: '%name%: Musíte vybrat minimálně 1 člena.'
+    max:
+      one: '%name%: Můžete vybrat maximálně 1 člena.'
+      two: '%name%: Můžete vybrat maximálně 2 členy.'
+      three: '%name%: Můžete vybrat maximálně 3 členy.'
+    range:
+      'Minimálně %0%, maximálně %1%'
+  user:
+    exists: 'Uživatel se stejným jménem a příjmením již existuje.'
+  team:
+    max: 'Tým již obsahuje maximální počet členů typu %s'
+    required: 'Prosím, vyplňte název závodního týmu.'
+    exists: 'Tým se stejným názvem již existuje.'

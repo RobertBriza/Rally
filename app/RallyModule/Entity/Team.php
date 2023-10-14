@@ -9,6 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="app\RallyModule\Repository\TeamRepository")
+ * @ORM\Table(name="team", uniqueConstraints={
+ *       @ORM\UniqueConstraint(name="unique_name", columns={"name"})
+ *   })
  */
 class Team
 {

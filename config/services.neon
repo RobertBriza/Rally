@@ -1,6 +1,7 @@
 services:
     - app\Router\RouterFactory::createRouter
     - app\AppModule\Service\TemplateRenderer(@twigEnvironment)
+    - app\AppModule\Service\CustomTranslator
     - app\RallyModule\Forms\MemberFormFactory
     - app\RallyModule\Forms\TeamFormFactory
     - app\RallyModule\Service\RallyService

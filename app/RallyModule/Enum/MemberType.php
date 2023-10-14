@@ -13,15 +13,7 @@ enum MemberType: string
 
     public function getLang(): string
     {
-        match ($this) {
-            self::DRIVER => $lang = 'Závodník',
-            self::CO_DRIVER => $lang = 'Spolujezdec',
-            self::TECHNICIAN => $lang = 'Technik',
-            self::MANAGER => $lang = 'Manažer',
-            self::PHOTOGRAPHER => $lang = 'Fotograf'
-        };
-
-        return $lang;
+        return 'member.' . $this->value;
     }
 
     public function getMinMaxForMultiSelect(): array
@@ -46,5 +38,16 @@ enum MemberType: string
         [$min, $max] = $this->getMinMaxForMultiSelect();
 
         return $count < $max;
+    }
+
+    public function getMaxErrorLang(): string
+    {
+        match ($this) {
+            self::DRIVER, self::CO_DRIVER => $lang = 'field.member.max.three',
+            self::TECHNICIAN => $lang = 'field.member.max.two',
+            self::MANAGER, self::PHOTOGRAPHER => $lang = 'field.member.max.one'
+        };
+
+        return $lang;
     }
 }

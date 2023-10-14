@@ -1,11 +1,11 @@
 {block content}
 <div class="list-teams-table">
-    <h2 class="text-center page-heading">Závodní týmy</h2>
+    <h2 class="text-center page-heading">{_lng.team.plural}</h2>
     <ul class="list-group">
         {foreach $names as $key => $name}
             <li class="list-group-item"><a n:href=":Rally:Members:list $key" class="text-primary">{$name}</a></li>
         {/foreach}
     </ul>
-    <li class="list-group-item"><a n:href=":Rally:Teams:create" class="text-primary">Vytvořit nový tým</a></li>
+    <li class="list-group-item"><a n:href=":Rally:Teams:create" class="text-primary">{_lng.team.create}</a></li>
 </div>
 {/block}

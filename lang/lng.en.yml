@@ -1,0 +1,53 @@
+team:
+  name: 'Team'
+  header: 'Team Name'
+  plural: 'Teams'
+  list: 'List of racing teams'
+  registered: 'The racing team has been successfully registered.'
+  create: 'Create a new team'
+  add: 'Add a team'
+  empty: 'No team'
+  members: 'Team members'
+  max:
+    reached: 'The team already contains the maximum number of members of type %name%'
+
+member:
+  plural: 'Team members'
+  driver: 'Driver'
+  codriver: 'Co-driver'
+  technician: 'Technician'
+  manager: 'Manager'
+  photographer: 'Photographer'
+  add: 'Add a member'
+
+name: 'Name'
+lastName: 'Surname'
+register: 'Register'
+type: 'Type'
+position: 'Position'
+switchLng: 'cs'
+
+field:
+  czechchars: 'The field must only contain characters of the Czech alphabet'
+  nospecialchars: 'The field must not contain special characters'
+  firstName:
+    required: 'Please, fill in the name.'
+  lastName:
+    required: 'Please, fill in the surname.'
+  type:
+    required: 'Please, select the type.'
+  member:
+    min:
+      one: '%name%: You must select at least 1 member.'
+    max:
+      one: '%name%: You can select a maximum of 1 member.'
+      two: '%name%: You can select a maximum of 2 members.'
+      three: '%name%: You can select a maximum of 3 members.'
+    range:
+      'Minimum %0%, maximum %1%'
+  user:
+    exists: 'A user with the same name and surname already exists.'
+  team:
+    max: 'The team already contains the maximum number of members of type %s'
+    required: 'Please, fill in the racing teams name.'
+    exists: 'A team with the same name already exists.'

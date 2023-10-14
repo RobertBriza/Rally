@@ -28,7 +28,9 @@
     "vlucas/phpdotenv": "^5.5",
     "nettrine/migrations": "^0.9.1",
     "nettrine/fixtures": "^0.7.2",
-    "beberlei/doctrineextensions": "dev-master"
+    "beberlei/doctrineextensions": "dev-master",
+    "contributte/translation": "^2.0",
+    "symfony/yaml": "^6.3"
   },
   "autoload": {
     "classmap": ["app/Bootstrap.php"]

@@ -1,12 +1,13 @@
 {block content}
+
 <div>
-    <h2 class="text-center page-heading">Seznam závodních týmů</h2>
+    <h2 class="text-center page-heading">{_lng.team.list}</h2>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>Název týmu</th>
-                <th>Pozice</th>
-                <th>Členové</th>
+                <th>{_lng.team.header}</th>
+                <th>{_lng.position}</th>
+                <th>{_lng.member.plural}</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +17,8 @@
                         {if $iterator->first}
                             <td rowspan="{count($memberTypes)}">{$team->name}</td>
                         {/if}
-                        <td><strong>{$type->getLang()}</strong></td>
+                        {var $memberTypeLang = 'lng.' . $type->getLang()}
+                        <td><strong>{$memberTypeLang|translate}</strong></td>
                         <td>
                             {foreach $team->members as $member}
                                 {if $member->type->value === $type->value}

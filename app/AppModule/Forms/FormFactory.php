@@ -16,11 +16,4 @@ abstract class FormFactory
     {
         return new Form;
     }
-
-    public function isCzechChars(Nette\Forms\Controls\TextInput $value): bool
-    {
-        $allowedChars = 'aábcčdďeéěfghchiíjklmnňoópqrřsštťuúůvwxyýzžAÁBCČDĎEÉĚFGHCHIÍJKLMNŇOÓPQRŘSŠTŤUÚŮVWXYÝZŽ';
-
-        return (bool) preg_match(\sprintf('/^[%s]+$/', preg_quote($allowedChars, '/')), $value->value);
-    }
 }

@@ -3,7 +3,8 @@ form th {
 }
 
 form td {
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 form small {

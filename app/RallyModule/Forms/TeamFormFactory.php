@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\RallyModule\Forms;
 
 use app\AppModule\Forms\FormFactory;
+use app\AppModule\Service\CustomTranslator;
 use app\RallyModule\Enum\MemberType;
 use app\RallyModule\Service\RallyService;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -16,22 +17,24 @@ class TeamFormFactory extends FormFactory
 {
     use Nette\SmartObject;
 
-    public function __construct( private RallyService $service)
-    {
+    public function __construct(
+        private readonly RallyService $service,
+        private readonly CustomTranslator $t
+    ) {
     }
 
     public function create(callable $onSuccess): Form
     {
         $form = parent::createForm();
-        $form->addText('name', 'Jméno:')
-            ->setRequired("Prosím, vyplňte název závodního týmu.")
+        $form->addText('name', $this->t->translate('team.name'))
+            ->setRequired($this->t->translate('field.team.required'))
             ->addRule(Form::MIN_LENGTH, null, 3)
             ->addRule(Form::MAX_LENGTH, null, 64)
             ->setHtmlAttribute('class', 'form-control')
             ->addCondition($form::FILLED)
             ->addRule(
                 Form::PATTERN,
-                'Pole nesmí obsahovat speciální znaky',
+                $this->t->translate('field.nospecialchars'),
                 '^[a-zA-Z0-9 ěščřžýáíéůúňťďĚŠČŘŽÝÁÍÉŮÚŇŤĎ]*$'
             );
 
@@ -42,22 +45,28 @@ class TeamFormFactory extends FormFactory
 
             $multiSelect = $form->addMultiSelect(
                 'members_' . $key,
-                $case->getLang(),
+                $this->t->translate($case->getLang()),
                 $members
             )
                 ->addRule(
-                    Form::LENGTH,
-                    'Vyberte členy pole ' . $case->getLang() . ' v počtu at mezi %d az %d ',
-                    $limits
+                    Form::MAX_LENGTH,
+                    $this->t->translate($case->getMaxErrorLang(), [
+                        'name' => $this->t->translate($case->getLang())
+                    ]),
+                    $limits[1]
                 )
                 ->setHtmlAttribute('class', 'form-control')
-                ->setOption("description", $case->getInfo());
+                ->setOption(
+                    "description",
+                    $this->t->translate('field.member.range', $case->getMinMaxForMultiSelect())
+                );
 
 
             if ($case !== MemberType::PHOTOGRAPHER) {
-                $multiSelect->setRequired(\sprintf('Musíte vybrat alespoň %d a maximálně %d členy', ...$limits));
+                $multiSelect->setRequired($this->t->translate('field.member.min.one', [
+                    'name' => $this->t->translate($case->getLang())
+                ]));
             }
-
         }
 
         $form->addSubmit('register', 'Registrovat')
@@ -67,8 +76,7 @@ class TeamFormFactory extends FormFactory
             try {
                 $this->service->registerTeam($data);
             } catch (UniqueConstraintViolationException) {
-                $form['firstName']->addError('Uživatel se stejným jménem a příjmením již existuje.');
-                $form['lastName']->addError('Uživatel se stejným jménem a příjmením již existuje.');
+                $form['name']->addError($this->t->translate('field.team.exists'));
                 return;
             }
             $onSuccess();
