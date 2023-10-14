@@ -25,7 +25,7 @@ lastName: 'Příjmení'
 register: 'Registrovat'
 type: 'Typ'
 position: 'Pozice'
-switchLng: 'en'
+switchLng: 'English version'
 
 field:
   czechchars: 'Pole musí obsahovat pouze znaky české abecedy'

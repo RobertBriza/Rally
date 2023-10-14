@@ -19,8 +19,8 @@ translation:
 	localeResolvers:
 		- Contributte\Translation\LocalesResolvers\Session
 	locales:
-		whitelist: [en, cs]
-		default: en
+		whitelist: [cs, en]
+		default: cs
 		fallback: [cs]
 	dirs:
 		- %appDir%/../lang

@@ -25,7 +25,7 @@ lastName: 'Surname'
 register: 'Register'
 type: 'Type'
 position: 'Position'
-switchLng: 'cs'
+switchLng: 'Česká verze'
 
 field:
   czechchars: 'The field must only contain characters of the Czech alphabet'

@@ -22,9 +22,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 
     public function handleChangeLocale(): void
     {
-        $defaultLocale = 'cs';
+        $defaultLocale = 'en';
 
-        $locale = $this->t->getLocale() === $defaultLocale ? 'en' : $defaultLocale;
+        $locale = $this->t->getLocale() === $defaultLocale ? 'cs' : $defaultLocale;
 
         $this->translatorSessionResolver->setLocale($locale);
         $this->redirect('this');
