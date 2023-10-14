@@ -1,5 +1,5 @@
 services:
-	- Doctrine\DBAL\Platforms\MySQL80Platform
+	- Doctrine\DBAL\Platforms\MariaDb1052Platform
 
 extensions:
 	nettrine.dbal: Nettrine\DBAL\DI\DbalExtension
@@ -28,7 +28,7 @@ nettrine.dbal:
 	debug:
 		panel: %debugMode%
 	connection:
-		platform: @Doctrine\DBAL\Platforms\MySQL80Platform
+		platform: @Doctrine\DBAL\Platforms\MariaDb1052Platform
 		typesMapping:
 			enum: string
 		host: %default.host%
