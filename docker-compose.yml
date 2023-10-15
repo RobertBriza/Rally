@@ -3,6 +3,8 @@ version: '3.8'
 services:
   fpm:
     container_name: rally_php
+    environment:
+      - MYSQL_HOST=$MYSQL_HOST
     build:
       args:
         SECRET_DIR: $SECRET_DIR
