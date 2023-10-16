@@ -24,6 +24,6 @@ class CustomTranslator
 
     public function getLocale(): string
     {
-        return$_SESSION['__NF']['DATA'][Session::class]['locale'] ?? 'en';
+        return $_SESSION['__NF']['DATA'][Session::class]['locale'] ?? 'cs';
     }
 }
