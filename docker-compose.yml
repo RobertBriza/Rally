@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   fpm:
-    container_name: rally_php
+    container_name: php
     environment:
       - MYSQL_HOST=$MYSQL_HOST
     build:
@@ -17,7 +17,7 @@ services:
       - db
 
   nginx:
-    container_name: rally_nginx
+    container_name: nginx
     build:
       dockerfile: $VOLUME_BASE_DIR/deploy/nginx/Dockerfile
       context: $VOLUME_BASE_DIR
@@ -31,7 +31,7 @@ services:
 
   db:
     image: mariadb:10.6.7
-    container_name: rally_db
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE

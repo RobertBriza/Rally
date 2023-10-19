@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: brizarobert/nginx:1.0
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: nginx-vhost-config
+              mountPath: /etc/nginx/conf.d
+              readOnly: true
+          command: [ "/bin/sh", "-c" ]
+          args: [ "chmod 755 /etc/nginx/conf.d; nginx -g 'daemon off;'" ]
+      volumes:
+        - name: nginx-vhost-config
+          configMap:
+            name: nginx-vhost-config
